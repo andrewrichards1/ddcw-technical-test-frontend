@@ -19,7 +19,7 @@ class MessageController @Inject()(backendConnector: BackendConnector,
 
   val getHomepage: Action[AnyContent] = Action { implicit request =>
     val maybeMessage: String = request.session.get("MESSAGE") getOrElse ""
-    Ok(homepage(messageInputForm, maybeMessage))
+    Ok(homepage(messageInputForm, maybeMessage)).removingFromSession("MESSAGE")
   }
 
   val submitMessage: Action[AnyContent] = Action.async { implicit request =>
