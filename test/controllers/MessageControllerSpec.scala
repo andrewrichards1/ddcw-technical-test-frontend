@@ -11,7 +11,7 @@ class MessageControllerSpec extends ControllerTestResources {
   private val mockBackendConnector = mock[BackendConnector]
   private val messageController = new MessageController(mockBackendConnector, messagesApi, mockCC)
 
-  "MessageController GET /home" should {
+  "MessageController GET /home" - {
 
     "return OK and show the homepage without a MESSAGE session" in {
 
@@ -34,7 +34,7 @@ class MessageControllerSpec extends ControllerTestResources {
     }
   }
 
-  "TemplateController POST /home" should {
+  "TemplateController POST /home" - {
 
     "redirect to getHomepage with successful form data" in {
       (mockBackendConnector.sendMessage(_: String)(_: ExecutionContext)).expects(*, *).returns(Future successful "response")
@@ -43,7 +43,7 @@ class MessageControllerSpec extends ControllerTestResources {
         .withFormUrlEncodedBody(validMessageInputForm: _*))
 
       status(request) shouldBe SEE_OTHER
-      redirectLocation(request).get shouldBe routes.MessageController.getHomepage().url
+      redirectLocation(request).get shouldBe routes.MessageController.getHomepage.url
     }
 
     "return BAD_REQUEST and show form with errors when form data has errors" in {
