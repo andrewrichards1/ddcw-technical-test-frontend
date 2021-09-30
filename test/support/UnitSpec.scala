@@ -1,5 +1,8 @@
 package support
 
-import org.scalatest.{Matchers, OptionValues, WordSpecLike}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.freespec.AnyFreeSpecLike
 
-trait UnitSpec extends WordSpecLike with Matchers with OptionValues
+import org.scalatest.OptionValues
+
+trait UnitSpec extends AnyFreeSpecLike with Matchers with OptionValues

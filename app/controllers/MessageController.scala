@@ -28,7 +28,7 @@ class MessageController @Inject()(backendConnector: BackendConnector,
         Future successful BadRequest(homepage(formWithErrors, ""))
       }, userMessage =>
         backendConnector.sendMessage(userMessage.message).map { response =>
-          Redirect(routes.MessageController.getHomepage()).addingToSession("MESSAGE" -> response)
+          Redirect(routes.MessageController.getHomepage).addingToSession("MESSAGE" -> response)
         }
     )
   }
